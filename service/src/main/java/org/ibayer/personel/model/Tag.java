@@ -11,6 +11,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the tag database table.
@@ -30,6 +32,7 @@ public class Tag implements Serializable {
 
 	//bi-directional many-to-one association to PersonTag
 	@OneToMany(mappedBy="tag")
+	@JsonIgnore
 	private Set<PersonTag> personTags;
 
 	public Tag() {

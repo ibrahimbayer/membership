@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 /**
  * Application class representing both spring boot and spring configuration.
  * 
@@ -17,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
+@EnableSwagger2
 public class Application {
 	/**
 	 * Application runner main method. {@link SpringApplication} run method is

@@ -1,5 +1,7 @@
 package org.ibayer.personel.repository;
 
+import java.util.List;
+
 import org.ibayer.personel.model.Tag;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -13,4 +15,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 public interface TagRepository extends PagingAndSortingRepository<Tag, Long> {
 
+	List<Tag> findByLabel(String label);
+	
 }
