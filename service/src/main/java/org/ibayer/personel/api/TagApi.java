@@ -38,7 +38,9 @@ public class TagApi {
 		List<Tag> data = repository.findByLabel(label);
 		Resources<Tag> body = new Resources<>(data);
 		body.add(linkTo(methodOn(TagApi.class).getTags(label)).withSelfRel());
-		//body.forEach(tag->tag.);
+		data.forEach(tag -> {
+			body.getLinks().add(linkTo(methodOn(TagApi.class).getTag(tag.getId())).withRel("_" + tag.getId()));
+		});
 		return new ResponseEntity<Resources<Tag>>(body,HttpStatus.OK);
 		
 	}
