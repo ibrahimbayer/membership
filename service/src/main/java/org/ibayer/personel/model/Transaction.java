@@ -37,9 +37,9 @@ public class Transaction implements Serializable {
 	@ManyToOne
 	private Currency currency;
 
-	//bi-directional many-to-one association to Partner
+	//bi-directional many-to-one association to Channel
 	@ManyToOne
-	private Partner partner;
+	private Channel channel;
 
 	public Transaction() {
 	}
@@ -100,12 +100,12 @@ public class Transaction implements Serializable {
 		this.currency = currency;
 	}
 
-	public Partner getPartner() {
-		return this.partner;
+	public Channel getChannel() {
+		return this.channel;
 	}
 
-	public void setPartner(Partner partner) {
-		this.partner = partner;
+	public void setChannel(Channel channel) {
+		this.channel = channel;
 	}
 
 }

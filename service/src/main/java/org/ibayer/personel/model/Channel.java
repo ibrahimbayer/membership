@@ -10,8 +10,8 @@ import java.util.Set;
  * 
  */
 @Entity
-@NamedQuery(name="Partner.findAll", query="SELECT p FROM Partner p")
-public class Partner implements Serializable {
+@NamedQuery(name="Channel.findAll", query="SELECT p FROM Channel p")
+public class Channel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,10 +23,10 @@ public class Partner implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to Transaction
-	@OneToMany(mappedBy="partner")
+	@OneToMany(mappedBy="channel")
 	private Set<Transaction> transactions;
 
-	public Partner() {
+	public Channel() {
 	}
 
 	public Long getId() {
@@ -63,15 +63,14 @@ public class Partner implements Serializable {
 
 	public Transaction addTransaction(Transaction transaction) {
 		getTransactions().add(transaction);
-		transaction.setPartner(this);
+		transaction.setChannel(this);
 
 		return transaction;
 	}
 
 	public Transaction removeTransaction(Transaction transaction) {
 		getTransactions().remove(transaction);
-		transaction.setPartner(null);
-
+		transaction.setChannel(null);
 		return transaction;
 	}
 

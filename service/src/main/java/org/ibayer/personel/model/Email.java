@@ -17,8 +17,8 @@ public class Email implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
-	@Column(name="email_address")
-	private Long emailAddress;
+	@Column(name="address")
+	private String address;
 
 	//bi-directional many-to-one association to Account
 	@ManyToOne
@@ -35,12 +35,12 @@ public class Email implements Serializable {
 		this.id = id;
 	}
 
-	public Long getEmailAddress() {
-		return this.emailAddress;
+	public String getAddress() {
+		return this.address;
 	}
 
-	public void setEmailAddress(Long emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public Account getAccount() {

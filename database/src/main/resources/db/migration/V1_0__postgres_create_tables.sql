@@ -54,7 +54,7 @@ create table email
 (
 	id bigserial NOT NULL ,
 	account_id bigint not null,
-	email_address bigint not null
+	address character varying(200) not null
 );
 alter table email add constraint email_pk primary key (id);
 alter table email add constraint email_account_id foreign key (account_id) references account(id); 
