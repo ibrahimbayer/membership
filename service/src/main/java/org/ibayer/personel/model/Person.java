@@ -16,7 +16,8 @@ public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="person_id_seq")
+    @SequenceGenerator(name="person_id_seq", sequenceName="person_id_seq", allocationSize=1)
 	private Long id;
 
 	@Temporal(TemporalType.DATE)
@@ -47,7 +48,7 @@ public class Person implements Serializable {
 	private Long title;
 
 	//bi-directional many-to-one association to Account
-	@OneToMany(mappedBy="person")
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy="person")
 	private Set<Account> accounts;
 
 	//bi-directional many-to-one association to PersonTag

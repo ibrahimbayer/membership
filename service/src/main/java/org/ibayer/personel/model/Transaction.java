@@ -1,8 +1,18 @@
 package org.ibayer.personel.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -15,19 +25,23 @@ public class Transaction implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="transaction_id_seq")
+    @SequenceGenerator(name="transaction_id_seq", sequenceName="transaction_id_seq", allocationSize=1)
 	private Long id;
 
 	private Long amount;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name="create_date")
-	private Timestamp createDate;
+	private Date createDate;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name="transaction_date")
-	private Timestamp transactionDate;
+	private Date transactionDate;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name="valid_until")
-	private Timestamp validUntil;
+	private Date validUntil;
 
 	//bi-directional many-to-one association to Account
 	@ManyToOne
@@ -60,27 +74,27 @@ public class Transaction implements Serializable {
 		this.amount = amount;
 	}
 
-	public Timestamp getCreateDate() {
+	public Date getCreateDate() {
 		return this.createDate;
 	}
 
-	public void setCreateDate(Timestamp createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 
-	public Timestamp getTransactionDate() {
+	public Date getTransactionDate() {
 		return this.transactionDate;
 	}
 
-	public void setTransactionDate(Timestamp transactionDate) {
+	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
 	}
 
-	public Timestamp getValidUntil() {
+	public Date getValidUntil() {
 		return this.validUntil;
 	}
 
-	public void setValidUntil(Timestamp validUntil) {
+	public void setValidUntil(Date validUntil) {
 		this.validUntil = validUntil;
 	}
 

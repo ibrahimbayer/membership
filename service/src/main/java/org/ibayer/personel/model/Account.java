@@ -15,7 +15,8 @@ public class Account implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="account_id_seq")
+    @SequenceGenerator(name="account_id_seq", sequenceName="account_id_seq", allocationSize=1)
 	private Long id;
 
 	private String name;
@@ -28,7 +29,7 @@ public class Account implements Serializable {
 	private Agent agent;
 
 	//bi-directional many-to-one association to Person
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Person person;
 
 	//bi-directional many-to-one association to Address

@@ -15,7 +15,8 @@ public class Channel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="channel_id_seq")
+    @SequenceGenerator(name="channel_id_seq", sequenceName="channel_id_seq", allocationSize=1)
 	private Long id;
 
 	private Long code;

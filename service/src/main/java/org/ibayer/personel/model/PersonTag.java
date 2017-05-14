@@ -15,7 +15,8 @@ public class PersonTag implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="person_tag_id_seq")
+    @SequenceGenerator(name="person_tag_id_seq", sequenceName="person_tag_id_seq", allocationSize=1)
 	private Long id;
 
 	//bi-directional many-to-one association to Person

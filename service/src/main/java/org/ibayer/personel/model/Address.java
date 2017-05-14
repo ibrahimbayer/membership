@@ -14,7 +14,8 @@ public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="address_id_seq")
+    @SequenceGenerator(name="address_id_seq", sequenceName="address_id_seq", allocationSize=1)
 	private Long id;
 
 	@Column(name="address_line_1")

@@ -14,7 +14,8 @@ public class Email implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="email_id_seq")
+    @SequenceGenerator(name="email_id_seq", sequenceName="email_id_seq", allocationSize=1)
 	private Long id;
 
 	@Column(name="address")
