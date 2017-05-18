@@ -30,6 +30,7 @@ public class Account implements Serializable {
 
 	//bi-directional many-to-one association to Person
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="account_id")
 	private Person person;
 
 	//bi-directional many-to-one association to Address

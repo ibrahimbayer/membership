@@ -2,6 +2,12 @@ package org.ibayer.personel.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -18,6 +24,7 @@ public class Person implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="person_id_seq")
     @SequenceGenerator(name="person_id_seq", sequenceName="person_id_seq", allocationSize=1)
+	@ApiModelProperty(hidden = true)
 	private Long id;
 
 	@Temporal(TemporalType.DATE)
@@ -38,11 +45,17 @@ public class Person implements Serializable {
 	@Column(name="middle_name")
 	private String middleName;
 
+	@NotNull
+	@Length(min = 2,max=200)
+	@ApiModelProperty(required = true)
 	private String name;
 
 	@Column(name="social_security")
 	private String socialSecurity;
 
+	@NotNull
+	@Length(min = 2,max=200)
+	@ApiModelProperty(required = true)
 	private String surname;
 
 	private Long title;

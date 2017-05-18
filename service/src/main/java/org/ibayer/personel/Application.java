@@ -59,6 +59,10 @@ public class Application {
 		return mapper;
 	}
 
+	/**
+	 * Configures Swagger {@link Docket} 
+	 * @return
+	 */
 	@Bean
 	public Docket api() {
 		Docket docket = new Docket(DocumentationType.SWAGGER_2); 

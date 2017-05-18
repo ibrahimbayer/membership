@@ -3,6 +3,8 @@ package org.ibayer.personel.api;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
+import javax.validation.Valid;
+
 import org.ibayer.personel.model.Person;
 import org.ibayer.personel.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +45,7 @@ public class MembershipApi {
 			@ApiResponse(code = 400, message = "Membership save failed", response = Person.class),
 			@ApiResponse(code = 500, message = "Membership save failed (internal system error)", response = Person.class)})
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Resource<Person>> insert(@ApiParam(value="Membership")@RequestBody Person person) {
+	public ResponseEntity<Resource<Person>> insert(@Valid @ApiParam(value="Membership")@RequestBody Person person) {
 		Resource<Person> body = new Resource<>(personRepository.save(person));
 		body.add(linkTo(methodOn(MembershipApi.class).get(body.getContent().getId())).withSelfRel());
 		return new ResponseEntity<>(body, HttpStatus.CREATED);
